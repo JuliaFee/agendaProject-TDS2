@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link ref="stylesheet" src="./assets/css/styles.index.css">
+    <link rel="stylesheet" href="assets/css/styles.index.css">
     <script src="./assets/js/scripts.index.js"></script>
     <title>Agenda Telefônica</title>
 </head>
 <body>
     <div id="main-container">
         <div id="sub-container">
-            <h2>Agenda Telefônica</h2>
+            <h2 id="title">Agenda Telefônica</h2>
             <div id="input-container">
                 <input placeholder="Nome Completo" id="name" required>
                 <input type="number" placeholder="Telefone fixo" maxlength="11"  id="fixtel" required>
@@ -22,7 +22,7 @@
                 <input placeholder="Cidade" id="city" required>
                 <input placeholder="@Instagram" id="insta" required>
                 <input placeholder="@Github" id="github" required>
-                <button onclick="createContact()">Adicionar Contato</button>
+                <button onclick="createContact()" id="createButton">Adicionar Contato</button>
             </div>
             <p id="success-msg" class="hidden"></p>
             <p id="error-msg" class="hidden"></p>
