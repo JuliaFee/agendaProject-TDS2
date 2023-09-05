@@ -186,6 +186,7 @@ function showContact() {
       <p id="contactFixTel">Telefone Fixo: ${contact.fixtel}</p>
       <p id="contactTel">Telefone: ${contact.tel}</p>
   </div>
+  </div>
                   `;
   });
   document.getElementById("post-container").innerHTML = html;
@@ -228,11 +229,14 @@ function contactDetail(id) {
       <p id="contactTel">Email: ${contact.email}</p>
       <p id="contactTel">CEP: ${contact.cep}</p>
       <p id="contactTel">Cidade: ${contact.city}</p>
-      <i class="fa-brands fa-whatsapp" src="https://whatsapp.com/${contact.tel}"></i>
-      <i class="fa-brands fa-instagram" src="https://instagram.com/${contact.github}"></i>
-      <i class="fa-brands fa-github" src="https://github.com/${contact.github}"></i>
+
                   `;
   document.getElementById("sidePost-container").innerHTML = html;
+  console.log(id);
+
+        // <i class="fa-brands fa-whatsapp"><a src="https://whatsapp.com/${contact.tel}"> </a></i>
+      // <i class="fa-brands fa-instagram"><a src="https://instagram.com/${contact.github}"></a></i>
+      // <i class="fa-brands fa-github"> <a src="https://github.com/${contact.github}"></a></i>
 }
 function sendErrorMsg(msg) {
   console.log("Passou pela funcao sendErrorMsg()");
