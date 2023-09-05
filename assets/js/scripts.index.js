@@ -6,7 +6,7 @@ class Contact {
     pfp,
     birthdate,
     email,
-    CEP,
+    cep,
     city,
     insta,
     github
@@ -20,7 +20,7 @@ class Contact {
     this.sign = this.getZodiacSign();
     this.id = this.getUserId();
     this.email = email;
-    this.CEP = CEP;
+    this.cep = cep;
     this.city = city;
     this.insta = insta;
     this.github = github;
@@ -183,8 +183,8 @@ function showContact() {
       <img src="${contact.pfp}" alt="${contact.name}" id="pfpShow">
       <div id="info-container">
       <h2 id="contactName">${contact.name}</h2>
-      <p id="contactFixTel">Telefone Fixo: ${contact.fixtel}</p>
-      <p id="contactTel">Telefone: ${contact.tel}</p>
+      <p id="contactFixTel">Telefone Fixo: ${formatedCellphoneAgain(contact.tel)}</p>
+      <p id="contactTel">Telefone: ${formatedCellphone(contact.fixtel)}</p>
   </div>
   </div>
                   `;
@@ -192,7 +192,6 @@ function showContact() {
   document.getElementById("post-container").innerHTML = html;
 }
 function formatedCellphone(fixtel) {
-  console.log("Passou pela funcao formatedCellphone()");
 
   let cellphoneArray = fixtel.split("");
   let cellphoneFormated =
@@ -212,8 +211,39 @@ function formatedCellphone(fixtel) {
     cellphoneArray[9] +
     cellphoneArray[10];
   return cellphoneFormated;
+}function formatedCellphoneAgain(tel) {
+
+
+  let cellphoneArray = tel.split("");
+  let cellphoneFormated =
+    "(" +
+    cellphoneArray[0] +
+    cellphoneArray[1] +
+    ")" +
+    " " +
+    cellphoneArray[2] +
+    cellphoneArray[3] +
+    cellphoneArray[4] +
+    cellphoneArray[5] +
+    cellphoneArray[6] +
+    "-" +
+    cellphoneArray[7] +
+    cellphoneArray[8] +
+    cellphoneArray[9] +
+    cellphoneArray[10];
+  return cellphoneFormated;
 }
+function newDate(birthdate){
+  const date = birthdate.split('-');
+  const newBirthdate = date.reverse().join('/');
+  return newBirthdate
+}
+// function newCEP(cep){
+//   const cpe = cep[7].split().cep[8];
+//   return cpe
+// }
 function contactDetail(id) {
+  document.getElementById("sidePost-container").classList.remove("hidden");
   const contact = listContact.getContactById(id);
   let html = `
   <p>Detalhe</p>
@@ -221,22 +251,23 @@ function contactDetail(id) {
       <h2 id="contactName">${contact.name}</h2>
       <p id="identifyContact">${contact.id}</p>
       
-      <p id="contactTel">Celular: ${contact.tel}</p>
-      <p id="contactTel">Telefone: ${contact.fixtel}</p>
-      <p id="contactTel">Data de Nascimento: ${contact.birthdate}</p>
+      <p id="contactTel">Celular: ${formatedCellphoneAgain(contact.tel)}</p>
+      <p id="contactTel">Telefone: ${formatedCellphone(contact.fixtel)}</p>
+      <p id="contactTel">Data de Nascimento: ${newDate(contact.birthdate)}</p>
       <p id="contactTel">Idade: ${contact.age}</p>
       <p id="contactTel">Signo: ${contact.sign}</p>
       <p id="contactTel">Email: ${contact.email}</p>
       <p id="contactTel">CEP: ${contact.cep}</p>
       <p id="contactTel">Cidade: ${contact.city}</p>
+      <a href="https://whatsapp.com/${contact.tel}"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="https://instagram.com/${contact.github}"><i class="fa-brands fa-instagram"></i></a>
+     <a href="https://github.com/${contact.github}"><i class="fa-brands fa-github"></i></a>
 
                   `;
   document.getElementById("sidePost-container").innerHTML = html;
   console.log(id);
 
-        // <i class="fa-brands fa-whatsapp"><a src="https://whatsapp.com/${contact.tel}"> </a></i>
-      // <i class="fa-brands fa-instagram"><a src="https://instagram.com/${contact.github}"></a></i>
-      // <i class="fa-brands fa-github"> <a src="https://github.com/${contact.github}"></a></i>
+       
 }
 function sendErrorMsg(msg) {
   console.log("Passou pela funcao sendErrorMsg()");

@@ -75,3 +75,8 @@ input{
     padding: 5px;
     margin: 5px;
 }
+a{
+    cursor: pointer;
+    color: black;
+    font-style: none;
+}
