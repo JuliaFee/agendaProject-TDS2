@@ -1,5 +1,5 @@
 class Contact{
-    constructor(name, fixtel, tel, birthdate, email, CEP, city, insta, github) {
+    constructor(name, fixtel, tel, pfp, birthdate, email, CEP, city, insta, github) {
       this.name = name;
       this.fixtel = fixtel;
       this.tel = tel;
@@ -64,21 +64,18 @@ class ListContact{
       this.contacts = [];
     }
     addContact(contact) {
-    //    if (isAnyInputEmpty()) {
-    //      sendErrorMsg("Preencha todos os campos");
-    //     if (!valida_cep(contact.cep)) {
-    //      sendErrorMsg("cep Inválido!");
-    //    } else if (iscepRegisted(cep)) {
-    //      sendErrorMsg("cep já registrado");
-    //    } else if (!isUserAPossibleClient(contact)){
-    //        return contact.status = true;
-    //    }
-    //    else {
-    //      sendSuccessMsg("Parabéns, você entrou na lista de espera!");
+
+       if (isAnyInputEmpty()) {
+         sendErrorMsg("Preencha todos os campos");
+       } else {
+         sendSuccessMsg("Parabéns, você entrou na lista de espera!");
         this.contacts.push(contact);
-      
     }
   }
+}
+
+
+  const listContact = new ListContact;
 
 function createContact() {
     console.log("entrou creatContact");
@@ -86,7 +83,7 @@ function createContact() {
     const fixtel = document.getElementById("fixtel").value;
     const tel = document.getElementById("tel").value;
     const pfp = document.getElementById("pfp").value;
-    const date = document.getElementById("date").value;
+    const birthdate = document.getElementById("date").value;
     const email = document.getElementById("email").value;
     const cep = document.getElementById("cep").value;
     const city = document.getElementById("city").value;
@@ -94,26 +91,66 @@ function createContact() {
     const github = document.getElementById("github").value;
     /* vai retornar false para reprensentar nao registrado */
   
-    const user = new Contact(name, fixtel, tel, pfp, date, email, cep, city, insta, github);
-    ListContact.addContact(user);
+    const user = new Contact(name, fixtel, tel, pfp, birthdate, email, cep, city, insta, github);
+    listContact.addContact(user);
   
     console.log(user);
    clearInputs();
-//   //   isAnyInputEmpty();
+   isAnyInputEmpty();
+   formatedCellphone(fixtel);
   }
 
-  function clearInputs(){
+function clearInputs(){
   console.log("entrou clearInputs");
   const name = document.getElementById("name").value = "";
   const fixtel = document.getElementById("fixtel").value = "";
   const tel = document.getElementById("tel").value = "";
   const pfp = document.getElementById("pfp").value = "";
-  const date = document.getElementById("date").value = "";
+  const birthdate = document.getElementById("date").value = "";
   const email = document.getElementById("email").value = "";
   const cep = document.getElementById("cep").value = "";
   const city = document.getElementById("city").value = "";
   const insta = document.getElementById("insta").value = "";
   const github = document.getElementById("github").value = "";
+  }
+function isAnyInputEmpty(){
+    console.log("entrou isAnyInputEmpty");
+    const name = document.getElementById("name").value;
+    const fixtel = document.getElementById("fixtel").value;
+    const tel = document.getElementById("tel").value;
+    const pfp = document.getElementById("pfp").value;
+    const birthdate = document.getElementById("date").value;
+    const email = document.getElementById("email").value;
+    const cep = document.getElementById("cep").value;
+    const city = document.getElementById("city").value;
+    const insta = document.getElementById("insta").value;
+    const github = document.getElementById("github").value;
+
+    if(name == "" || fixtel == "" ||tel == "" || pfp == "" ||birthdate == "" || email == "" ||cep == "" || city == "" ||insta == "" || github == ""){
+        return sendErrorMsg("Preencha os campos");
+    }
+}
+function formatedCellphone(fixtel) {
+    console.log("Passou pela funcao formatedCellphone()");
+  
+    let cellphoneArray = fixtel.split("");
+    let cellphoneFormated =
+      "(" +
+      cellphoneArray[0] +
+      cellphoneArray[1] +
+      ")" +
+      " " +
+      cellphoneArray[2] +
+      cellphoneArray[3] +
+      cellphoneArray[4] +
+      cellphoneArray[5] +
+      cellphoneArray[6] +
+      "-" +
+      cellphoneArray[7] +
+      cellphoneArray[8] +
+      cellphoneArray[9] +
+      cellphoneArray[10];
+    return cellphoneFormated;
   }
 
 function sendErrorMsg(msg) {
