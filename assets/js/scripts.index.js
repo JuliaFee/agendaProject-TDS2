@@ -68,7 +68,7 @@ class ListContact{
        if (isAnyInputEmpty()) {
          sendErrorMsg("Preencha todos os campos");
        } else {
-         sendSuccessMsg("Parabéns, você entrou na lista de espera!");
+         sendSuccessMsg("Contato Adicionado");
         this.contacts.push(contact);
     }
   }
