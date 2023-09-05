@@ -7,6 +7,7 @@ class Contact{
       this.birthdate = birthdate;
       this.age = this.getAge(birthdate);
       this.sign = this.getZodiacSign();
+      this.id = this.getUserId();
       this.email = email;
       this.CEP = CEP;
       this.city = city;
@@ -58,6 +59,10 @@ class Contact{
           return "Sagitário ♐";
         }    
 }
+getUserId(){
+    const id = Math.floor(Math.random());
+    return id;
+}
 }
 class ListContact{
     constructor() {
@@ -98,6 +103,7 @@ function createContact() {
    clearInputs();
    isAnyInputEmpty();
    formatedCellphone(fixtel);
+   showContact();
   }
 
 function clearInputs(){
@@ -130,6 +136,52 @@ function isAnyInputEmpty(){
         return sendErrorMsg("Preencha os campos");
     }
 }
+function showContact() {
+    console.log("entrou pela funcao showContact");
+  
+    let html = "";
+  
+    listContact.contacts.forEach((contact) => {
+      html += `<div id="contactCard" onclick="contactDetail()">
+      <img src="${contact.pfp}" alt="${contact.name}" id="pfpShow">
+      <div id="info-container">
+      <h2 id="contactName">${contact.name}</h2>
+      <p id="contactFixTel">Telefone Fixo: ${contact.fixtel}</p>
+      <p id="contactTel">Telefone: ${contact.tel}</p>
+  </div>
+                  `;
+    });
+    document.getElementById("post-container").innerHTML = html;
+  }
+  function contactDetail() {
+    console.log("entrou pela funcao contactDetail");
+  
+    let html = "";
+  
+    listContact.contacts.forEach((contact) => {
+      html = ` <p>Detalhe</p>
+      <img src="${contact.pfp}" alt="${contact.name}" id="pfpDetail">
+      <h2 id="contactName">${contact.name}</h2>
+      <p id="identifyContact">${contact.id}</p>
+      
+      <p id="contactTel">Celular: ${contact.tel}</p>
+      <p id="contactTel">Telefone: ${contact.fixtel}</p>
+      <p id="contactTel">Data de Nascimento: ${contact.birthdate}</p>
+      <p id="contactTel">Idade: ${contact.idade}</p>
+      <p id="contactTel">Signo: ${contact.signo}</p>
+      <p id="contactTel">Email: ${contact.email}</p>
+      <p id="contactTel">CEP: ${contact.cep}</p>
+      <p id="contactTel">Cidade: ${contact.city}</p>
+      <p id="contactTel">Instagram: ${contact.insta}</p>
+      <p id="contactTel">Github: ${contact.github}</p>
+
+      <a id="whatsappIcon">whatsap</a>
+      <a id="instagramIcon">instagram</a>
+      <a id="githubIcon">github</a>
+                  `;
+    });
+    document.getElementById("sidePost-container").innerHTML = html;
+  }
 function formatedCellphone(fixtel) {
     console.log("Passou pela funcao formatedCellphone()");
   

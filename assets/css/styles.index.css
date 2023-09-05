@@ -29,11 +29,38 @@ body{
 }
 #post-container{
     margin: 50px;
+    max-width: 50%;
+}
+#pfpShow, #pfpDetail{
+    border-radius: 10px;
+}
+#sidePost-container{
+    background-color: white;
+    align-items: center;
+    margin: 0;
+    padding: 50px;
+    border-radius: 30px;
+}
+#pfpShow{
+    max-width: 100px;
+    max-height: 100px;
+    border: 10px;
+}
+#pfpDetail{
+    max-width: 200px;
+    max-height: 200px;
+    border: 100px;
 }
 #contactCard{
     background-color: white;
     border-radius: 10px;
-    padding: 20px;
+    padding: 30px;
+    margin: 10px;
+    justify-content: left;
+}
+#info-container{
+    display: flex;
+    flex-direction: column;
 }
 #createButton{
     background-color: rgb(84, 84, 255);
