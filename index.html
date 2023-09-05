@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link ref="stylesheet" src="./assets/css/styles.index.css">
-    <script href="./assets/js/scripts.index.js"></script>
+    <script src="./assets/js/scripts.index.js"></script>
     <title>Agenda Telefônica</title>
 </head>
 <body>
@@ -12,21 +12,21 @@
         <div id="sub-container">
             <h2>Agenda Telefônica</h2>
             <div id="input-container">
-                <input placeholder="Nome Completo">
-                <input placeholder="Telefone fixo">
-                <input placeholder="Telefone celular">
-                <input placeholder="URL da foto">
-                <input type="date">
-                <input placeholder="E-mail">
-                <input placeholder="CEP">
-                <input placeholder="Cidade">
-                <input placeholder="@Instagram">
-                <input placeholder="@Github">
-                <button>Adicionar Contato</button>
+                <input placeholder="Nome Completo" id="name" required>
+                <input type="number" placeholder="Telefone fixo" maxlength="11"  id="fixtel" required>
+                <input type="number" placeholder="Telefone celular"  maxlength="11"  id="tel" required>
+                <input placeholder="URL da foto" id="pfp" required>
+                <input type="date" id="date" required>
+                <input placeholder="E-mail" id="email" required>
+                <input type="number" placeholder="CEP" maxlength="8"  id="cep" required>
+                <input placeholder="Cidade" id="city" required>
+                <input placeholder="@Instagram" id="insta" required>
+                <input placeholder="@Github" id="github" required>
+                <button onclick="createContact()">Adicionar Contato</button>
             </div>
-            <div id="post-container">
-                
-            </div>
+            <p id="success-msg" class="hidden"></p>
+            <p id="error-msg" class="hidden"></p>
+            <div id="post-container"></div>
         </div>
     </div>
     
