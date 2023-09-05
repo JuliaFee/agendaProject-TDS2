@@ -167,17 +167,14 @@ function showContact() {
       <p id="contactTel">Celular: ${contact.tel}</p>
       <p id="contactTel">Telefone: ${contact.fixtel}</p>
       <p id="contactTel">Data de Nascimento: ${contact.birthdate}</p>
-      <p id="contactTel">Idade: ${contact.idade}</p>
-      <p id="contactTel">Signo: ${contact.signo}</p>
+      <p id="contactTel">Idade: ${contact.age}</p>
+      <p id="contactTel">Signo: ${contact.sign}</p>
       <p id="contactTel">Email: ${contact.email}</p>
       <p id="contactTel">CEP: ${contact.cep}</p>
       <p id="contactTel">Cidade: ${contact.city}</p>
-      <p id="contactTel">Instagram: ${contact.insta}</p>
-      <p id="contactTel">Github: ${contact.github}</p>
-
-      <a id="whatsappIcon">whatsap</a>
-      <a id="instagramIcon">instagram</a>
-      <a id="githubIcon">github</a>
+      <i class="fa-brands fa-whatsapp" src="https://whatsapp.com/${contact.tel}"></i>
+      <i class="fa-brands fa-instagram" src="https://instagram.com/${contact.github}"></i>
+      <i class="fa-brands fa-github" src="https://github.com/${contact.github}"></i>
                   `;
     });
     document.getElementById("sidePost-container").innerHTML = html;
